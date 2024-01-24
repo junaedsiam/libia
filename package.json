@@ -28,7 +28,9 @@
   },
   "homepage": "https://github.com/junaedsiam/libia#readme",
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "@types/node": "^20.11.6",
+    "cz-conventional-changelog": "^3.3.0",
+    "typescript": "^5.3.3"
   },
   "config": {
     "commitizen": {
