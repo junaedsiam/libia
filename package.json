@@ -2,9 +2,12 @@
   "name": "libia",
   "version": "0.0.1",
   "description": "A cli tool to start your next Javascript library",
-  "main": "index.js",
+  "main": "dist/cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc"
+  },
+  "bin": {
+    "libia": "bin/libia"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,3 @@
 export async function cli(args: string[]): Promise<void> {
-  console.log(args);
+  console.log(args.slice(2));
 }
