@@ -21,5 +21,6 @@ libia init
 # Do you want to use typescript ?
 # Entry file - default
 # Output file - default
+# 
 # inject css in js - default (no)
 ```
