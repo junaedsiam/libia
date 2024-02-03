@@ -15,12 +15,8 @@
 To initialize the CLI -
 
 ```bash
-# Initializing the Cli
-libia init
-# Choose your platform -  3 options react / svelte / vue
-# Do you want to use typescript ?
-# Entry file - default
-# Output file - default
-# 
-# inject css in js - default (no)
+# init and scaffold into the current dir
+libia init .
+# init and scaffold into the given dir
+libia init my-lib
 ```
