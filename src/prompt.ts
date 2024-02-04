@@ -19,6 +19,7 @@ export async function initiatePrompt() {
     message: "Entry file : src /",
     default: "index.ts",
     validate: (val: string) => {
+      if (!val) return true;
       const expectedExt = isTypescript ? ".ts" : ".js";
       return val.endsWith(expectedExt)
         ? true
@@ -28,8 +29,12 @@ export async function initiatePrompt() {
   const outputFileName = await input({
     message: "Output file : dist /",
     default: "index.js",
-    validate: (val: string) =>
-      val.endsWith(".js") ? true : "Filename must end with .js",
+    validate: (val: string) => {
+      if (!val) {
+        return true;
+      }
+      return val.endsWith(".js") ? true : "Filename must end with .js";
+    },
   });
 
   const seperateCss = await confirm({
