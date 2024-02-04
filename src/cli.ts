@@ -30,8 +30,8 @@ async function provideTemplateBasedOnOptions(
   targetDir: string
 ) {
   const templateName = getTemplateName(options);
-  const src = path.join(process.cwd(), `templates/${templateName}`);
-
+  const src = path.join(__dirname, "..", `templates/${templateName}`);
+  console.log(src);
   try {
     await access(src, fs.constants.R_OK);
   } catch (err) {
@@ -39,7 +39,7 @@ async function provideTemplateBasedOnOptions(
     process.exit(1);
   }
 
-  copy(templateName, targetDir, {
+  copy(src, targetDir, {
     clobber: false,
     // Excluding template files for later processing
     filter: (filename: string) => {
