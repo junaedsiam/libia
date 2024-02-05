@@ -1,13 +1,14 @@
 import select from "@inquirer/select";
 import confirm from "@inquirer/confirm";
 import input from "@inquirer/input";
-import { templates } from "./constants";
+import { frameworks } from "./constants";
+import { getDefaultEntry } from "./utils";
 
 export async function initiatePrompt() {
-  const template = await select({
-    message: "Choose Project Template: ",
-    choices: templates,
-    default: templates[0].value,
+  const framework = await select({
+    message: "Choose Project framework: ",
+    choices: frameworks,
+    default: frameworks[0].value,
   });
 
   const isTypescript = await confirm({
@@ -17,7 +18,7 @@ export async function initiatePrompt() {
 
   const entryFileName = await input({
     message: "Entry file : src /",
-    default: "index.ts",
+    default: getDefaultEntry(isTypescript),
     validate: (val: string) => {
       if (!val) return true;
       const expectedExt = isTypescript ? ".ts" : ".js";
@@ -43,7 +44,7 @@ export async function initiatePrompt() {
   });
 
   return {
-    template,
+    framework,
     isTypescript,
     entryFileName,
     outputFileName,

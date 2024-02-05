@@ -1,6 +1,6 @@
-import { Template } from "./type";
+import { Framework, Templates } from "./type";
 
-export const templates: { name: string; value: Template }[] = [
+export const frameworks: { name: string; value: Framework }[] = [
   {
     name: "React",
     value: "react",

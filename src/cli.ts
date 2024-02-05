@@ -4,25 +4,41 @@ import fs from "node:fs";
 import ncp from "ncp";
 import { InvalidArgError } from "./error";
 import { initiatePrompt } from "./prompt";
-import { PromptOptions } from "./type";
+import { PromptOptions, Templates } from "./type";
 import chalk from "chalk";
+import { getDefaultEntry } from "./utils";
 
-const access = promisify(fs.access);
+const fsAccess = promisify(fs.access);
 const copy = promisify(ncp);
+const fsRename = promisify(fs.rename);
 
 const INIT = "init";
 
 function parseArguments(args: string[]) {
   if (!args[0] || args[0] !== INIT || !args[1]) {
-    throw new InvalidArgError();
+    throw new InvalidArgError(
+      `format: "libia init ." or "libia init <your-lib-name>"`
+    );
   }
 
   return args;
 }
 
 function getTemplateName(options: PromptOptions) {
-  const { template, isTypescript } = options;
-  return template + (isTypescript ? "-ts" : "");
+  const { framework, isTypescript } = options;
+  return (framework + (isTypescript ? "-ts" : "")) as Templates;
+}
+
+async function renameEntryFile(options: PromptOptions, targetDir: string) {
+  const defaultFile = getDefaultEntry(options.isTypescript);
+  // If user has proceeded with default, do not have to rename
+  if (options.entryFileName === defaultFile) {
+    return;
+  }
+  await fsRename(
+    path.join(targetDir, "src", defaultFile),
+    path.join(targetDir, "src", options.entryFileName)
+  );
 }
 
 async function provideTemplateBasedOnOptions(
@@ -31,24 +47,25 @@ async function provideTemplateBasedOnOptions(
 ) {
   const templateName = getTemplateName(options);
   const src = path.join(__dirname, "..", `templates/${templateName}`);
-  console.log(src);
+
   try {
-    await access(src, fs.constants.R_OK);
+    await fsAccess(src, fs.constants.R_OK);
   } catch (err) {
     console.error("%s Invalid template name", chalk.red.bold("ERROR"));
     process.exit(1);
   }
-
-  copy(src, targetDir, {
+  // Copy initial template
+  await copy(src, targetDir, {
     clobber: false,
-    // Excluding template files for later processing
-    filter: (filename: string) => {
-      if (filename.endsWith(".ejs")) {
-        return false;
-      }
-      return true;
-    },
-  }).catch((err) => console.log(err));
+  }).catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+  // Rename entry file if required
+  await renameEntryFile(options, targetDir);
+  // Todo: update package.json with lib info
+
+  // Todo: Put libia.config.json with user given options
 }
 
 export async function cli(rawArgs: string[]): Promise<void> {
@@ -60,5 +77,3 @@ export async function cli(rawArgs: string[]): Promise<void> {
 
   await provideTemplateBasedOnOptions(options, path.basename(args[1]));
 }
-// Extract information about template from template + isTypescript
-// entryFileName + outputFileName + injectCssInJs -> put it in vite config
