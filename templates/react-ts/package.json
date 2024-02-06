@@ -6,12 +6,12 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/react-ts.umd.cjs",
-  "module": "./dist/react-ts.js",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/react-ts.js",
-      "require": "./dist/react-ts.umd.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
     }
   },
   "scripts": {

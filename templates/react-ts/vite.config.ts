@@ -3,8 +3,9 @@ import react from "@vitejs/plugin-react";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import pkg from "./package.json";
 import tsconfigPaths from "vite-tsconfig-paths";
-// https://vitejs.dev/config/
+import config from "./config.json";
 
+// https://vitejs.dev/config/
 const generateConfig = ({
   entry = "src/index.ts",
   injectCssInJs = false,
@@ -36,4 +37,4 @@ const generateConfig = ({
   return config;
 };
 
-export default generateConfig({});
+export default generateConfig(config);
