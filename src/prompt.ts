@@ -1,9 +1,9 @@
 import select from "@inquirer/select";
 import confirm from "@inquirer/confirm";
 import input from "@inquirer/input";
-import { frameworks, packageManagers } from "./constants";
-import { getDefaultEntry } from "./utils";
 import validateNpmPackageName from "validate-npm-package-name";
+import { frameworks, packageManagers } from "./constants.js";
+import { getDefaultEntry } from "./utils.js";
 
 export async function initiatePrompt() {
   const packageName = await input({

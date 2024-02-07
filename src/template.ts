@@ -1,12 +1,12 @@
-import { PackageManagers, PromptOptions, Templates } from "./type";
-import { getDefaultEntry } from "./utils";
-import path from "node:path";
 import fs from "node:fs/promises";
 import chalk from "chalk";
 import { promisify } from "node:util";
+import path, { dirname } from "node:path";
+import { fileURLToPath } from "url";
 import ncp from "ncp";
-//@ts-ignore
 import { execa } from "execa";
+import { getDefaultEntry } from "./utils.js";
+import { PackageManagers, PromptOptions, Templates } from "./type.js";
 
 const copy = promisify(ncp);
 
@@ -71,7 +71,11 @@ export async function prepareTemplate(
   targetDir: string
 ) {
   const templateName = getTemplateName(options);
-  const src = path.join(__dirname, "..", `templates/${templateName}`);
+  const src = path.join(
+    dirname(fileURLToPath(import.meta.url)),
+    "..",
+    `templates/${templateName}`
+  );
 
   await fs.access(src, fs.constants.R_OK).catch((err) => {
     console.error("%s Invalid template name", chalk.red.bold("ERROR"));

@@ -1,4 +1,4 @@
-import { Framework, PackageManagers, Templates } from "./type";
+import { Framework, PackageManagers, Templates } from "./type.js";
 
 export const frameworks: { name: string; value: Framework }[] = [
   {

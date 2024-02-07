@@ -2,21 +2,38 @@
   <img src="./static/logo.svg" alt="Libia" style="height: auto; width:200px;" />
 </p>
 
-<h3 align="center">A CLI tool to start your next Javascript Library</h3>
-
-### Supported platform
-
-- React
-- Svelte (Coming soon)
-- Vue (Coming soon)
+<h3 align="center">A CLI tool to scaffold your next frontend library</h3>
 
 ### Getting started
 
 To initialize the CLI -
 
 ```bash
-# init and scaffold into the current dir
+# inside current directory
 libia init .
-# init and scaffold into the given dir
-libia init my-lib
+# inside a new directory
+libia init test-lib
 ```
+
+Example -
+
+```bash
+libia init test
+? Enter your package name: test
+? Choose Project framework:  React
+? Want to use Typescript? yes
+? Entry file : src / index.ts
+? Want to seperate CSS file from JS?  yes
+? Choose a package manager:  pnpm (recommended)
+✔ Preparing template
+✔ Initializing git
+✔ installing dependencies
+┌───────────────┐
+│               │
+│   All done!   │
+│               │
+└───────────────┘
+Head into your package, and build something amazing
+```
+
+If you find this tool useful, feel free to give it a star.
