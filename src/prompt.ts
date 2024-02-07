@@ -1,7 +1,7 @@
 import select from "@inquirer/select";
 import confirm from "@inquirer/confirm";
 import input from "@inquirer/input";
-import { frameworks } from "./constants";
+import { frameworks, packageManagers } from "./constants";
 import { getDefaultEntry } from "./utils";
 import validateNpmPackageName from "validate-npm-package-name";
 
@@ -46,11 +46,18 @@ export async function initiatePrompt() {
     default: true,
   });
 
+  const packageManager = await select({
+    message: "Choose a package manager: ",
+    choices: packageManagers,
+    default: packageManagers[0].value,
+  });
+
   return {
     framework,
     isTypescript,
     entry,
     packageName,
     injectCssInJs: !seperateCss,
+    packageManager,
   };
 }

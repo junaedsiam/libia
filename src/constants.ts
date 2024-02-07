@@ -1,4 +1,4 @@
-import { Framework, Templates } from "./type";
+import { Framework, PackageManagers, Templates } from "./type";
 
 export const frameworks: { name: string; value: Framework }[] = [
   {
@@ -12,5 +12,16 @@ export const frameworks: { name: string; value: Framework }[] = [
   {
     name: "Svelte",
     value: "svelte",
+  },
+];
+
+export const packageManagers: { name: string; value: PackageManagers }[] = [
+  {
+    name: "pnpm (recommended)",
+    value: "pnpm",
+  },
+  {
+    name: "npm",
+    value: "npm",
   },
 ];
