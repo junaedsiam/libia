@@ -36,4 +36,10 @@ libia init test
 Head into your package, and build something amazing
 ```
 
-If you find this tool useful, feel free to give it a star.
+### Features
+
+- Specifically configured for frontend library development
+- Built on top of "Vite" build tool
+- Storybook
+
+For bugs and feature requests create an issue. If you find this tool useful feel free to give it a star on github! Happy coding!
