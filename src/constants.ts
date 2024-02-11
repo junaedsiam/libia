@@ -2,6 +2,10 @@ import { Framework, PackageManagers, Templates } from "./type.js";
 
 export const frameworks: { name: string; value: Framework }[] = [
   {
+    name: "Vanilla",
+    value: "vanilla",
+  },
+  {
     name: "React",
     value: "react",
   },

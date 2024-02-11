@@ -6,6 +6,13 @@
 
 ### Getting started
 
+Libia currently supports-
+
+- Vanilla JS / TS
+- React (JS / TS)
+- Vue (JS / TS)
+- Svelte (JS / TS)
+
 To initialize the CLI -
 
 ```bash
