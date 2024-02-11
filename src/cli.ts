@@ -5,7 +5,6 @@ import { initializeGit, installDeps, prepareTemplate } from "./template.js";
 import { type PromptOptions, type TaskCtx } from "./type.js";
 import boxen from "boxen";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import chalk from "chalk";
 
 const INIT = "init";
