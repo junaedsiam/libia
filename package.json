@@ -1,15 +1,16 @@
 {
   "name": "libia",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A cli tool to scaffold your next Javascript library",
   "main": "dist/cli.js",
+  "type": "module",
   "scripts": {
     "dev": "tsc",
     "build": "tsc",
     "prepublishOnly": "tsc"
   },
   "bin": {
-    "libia": "bin/libia"
+    "libia": "bin/libia.js"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,6 @@
   ],
   "author": "junaedsiam",
   "license": "MIT",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/junaedsiam/libia/issues"
   },
