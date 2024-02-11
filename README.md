@@ -29,7 +29,7 @@ pnpm dlx libia init lib-name
 
 ```
 
-You can also use other package managers as well
+You can use other package managers as well
 
 ```bash
 # npm

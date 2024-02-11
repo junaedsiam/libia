@@ -1,6 +1,6 @@
 {
   "name": "libia",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A cli tool to scaffold your next Javascript library",
   "main": "dist/cli.js",
   "type": "module",
