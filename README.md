@@ -18,17 +18,30 @@ It currently supports -
 
 To initialize the CLI -
 
+**pnpm**
+
 ```bash
-# inside current directory
-libia init .
-# inside a new directory
-libia init test-lib
+# pnpm
+pnpm dlx libia init .
+# or
+pnpm dlx libia init lib-name
+
 ```
 
-Example -
+You can also use other package managers as well
 
 ```bash
-libia init test
+# npm
+npx libia init lib-name
+# yarn
+yarn dlx libia init lib-name
+```
+
+#### Example
+
+```bash
+pnpm dlx libia init test
+---
 ? Enter your package name: test
 ? Choose Project framework:  React
 ? Want to use Typescript? yes
