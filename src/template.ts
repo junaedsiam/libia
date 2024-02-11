@@ -15,14 +15,20 @@ function getTemplateName(options: PromptOptions) {
   return (framework + (isTypescript ? "-ts" : "")) as Templates;
 }
 
-async function renameEntryFile(options: PromptOptions, targetDir: string) {
-  const defaultFile = getDefaultEntry(options.isTypescript);
+async function renameFiles(options: PromptOptions, targetDir: string) {
+  // rename _gitignore file
+  await fs.rename(
+    path.join(targetDir, "_gitignore"),
+    path.join(targetDir, ".gitignore")
+  );
+  // rename entry if required
   // If user has proceeded with default, do not have to rename
-  if (options.entry === defaultFile) {
+  const defaultEntry = getDefaultEntry(options.isTypescript);
+  if (options.entry === defaultEntry) {
     return;
   }
   await fs.rename(
-    path.join(targetDir, "src", defaultFile),
+    path.join(targetDir, "src", defaultEntry),
     path.join(targetDir, "src", options.entry)
   );
 }
@@ -89,7 +95,7 @@ export async function prepareTemplate(
     console.error(err);
     process.exit(1);
   });
-  await renameEntryFile(options, targetDir);
+  await renameFiles(options, targetDir);
   await updatePackageJson(options, targetDir);
   await addConfigJson(options, targetDir);
 }
