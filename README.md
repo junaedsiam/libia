@@ -6,8 +6,9 @@
 
 ### Libia
 
-Libia is a CLI based tool to scaffold frontend library templates. Its built on top of "vite".
-It currently supports -
+Libia is a CLI tool to scaffold your next frontend library template. It provides library specific configurations along with starter files.
+
+**Supported platforms**
 
 - Vanilla JS / TS
 - React (JS / TS)
