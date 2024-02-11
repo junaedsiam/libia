@@ -53,10 +53,7 @@ export async function cli(rawArgs: string[]): Promise<void> {
     await tasks.run();
 
     // attach specific dir name here
-    const repoPath = path.join(
-      path.dirname(fileURLToPath(import.meta.url)),
-      args[1]
-    );
+    const repoPath = path.join(process.cwd(), args[1]);
     console.log(
       boxen(chalk.green.bold("All done!"), {
         padding: 2,
