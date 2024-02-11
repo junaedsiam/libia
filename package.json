@@ -1,10 +1,12 @@
 {
   "name": "libia",
   "version": "0.0.1",
-  "description": "A cli tool to start your next Javascript library",
+  "description": "A cli tool to scaffold your next Javascript library",
   "main": "dist/cli.js",
   "scripts": {
-    "dev": "tsc"
+    "dev": "tsc",
+    "build": "tsc",
+    "prepublishOnly": "tsc"
   },
   "bin": {
     "libia": "bin/libia"
@@ -16,10 +18,12 @@
   "keywords": [
     "cli",
     "scaffolding",
+    "javascript",
+    "typescript",
+    "library",
     "react",
     "svelte",
     "vue",
-    "library",
     "boilerplate",
     "starter",
     "generator"

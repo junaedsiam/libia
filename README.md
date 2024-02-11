@@ -4,14 +4,17 @@
 
 <h3 align="center">A CLI tool to scaffold your next frontend library</h3>
 
-### Getting started
+### Libia
 
-Libia currently supports-
+Libia is a CLI based tool to scaffold frontend library templates. Its built on top of "vite".
+It currently supports -
 
 - Vanilla JS / TS
 - React (JS / TS)
 - Vue (JS / TS)
 - Svelte (JS / TS)
+
+### Getting started
 
 To initialize the CLI -
 
@@ -42,11 +45,5 @@ libia init test
 └───────────────┘
 Head into your package, and build something amazing
 ```
-
-### Features
-
-- Specifically configured for frontend library development
-- Built on top of "Vite" build tool
-- Storybook
 
 For bugs and feature requests, create an issue. If you find this tool useful feel free to give it a star on github! Happy coding!
